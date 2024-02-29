@@ -12059,15 +12059,4 @@ p {
 
 .form-label {
   color: #906427;
-}
-
-.conteneur-boutons-home .bouton {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(133.9px, 1fr));
-  align-items: center;
-}
-
-.bouton {
-  padding: 10px;
-  border: 1px solid #ccc;
 }/*# sourceMappingURL=main.css.map */
