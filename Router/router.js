@@ -50,6 +50,21 @@ const LoadContentPage = async () => {
   // Récupération de l'URL actuelle
 
   const actualRoute = getRouteByUrl(path);
+  // vérifier les droits d'acces à la page
+  const allRolesArray = actualRoute.authorize;
+  if(allRolesArray.length > 0){
+    if(allRolesArray.includes("disconnected")){
+      if(isConnected()){
+        window.location.replace("/");
+      }
+    }
+    else{
+      const roleUser = getRole();
+      if(!allRolesArray.includes(roleUser)){
+        window.location.replace("/");
+      }
+    }
+  }
 
   // Récupération du contenu HTML de la route
 
@@ -83,6 +98,9 @@ const LoadContentPage = async () => {
   // Changement du titre de la page
 
   document.title = actualRoute.title + " - " + websiteName;
+  
+  // Afficher et masquer les éléments en fonction du role
+  showAndHideElementsForRoles();
 
 };
 
